@@ -3,8 +3,9 @@ from string import ascii_uppercase
 from pathlib import Path
 from argparse import (ArgumentParser)
 
+drive_format = '{drive}:\\'
 to_scan = [
-    Path('{drive}:\\'.format(drive=drive)).absolute() for drive in ascii_uppercase if Path('{drive}:\\'.format(drive=drive)).exists()
+    Path(drive_format.format(drive=drive)).absolute() for drive in ascii_uppercase if Path(drive_format.format(drive=drive)).exists()
 ] if system() == 'Windows' else [Path('/')]
 
 parser = ArgumentParser()
